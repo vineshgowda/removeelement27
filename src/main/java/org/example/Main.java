@@ -9,9 +9,9 @@ import static java.util.Arrays.sort;
 public class Main {
     public static void main(String[] args) {
 
-        int[] nums = new int[]{3,2,2,3}; // Input array
-        int val = 3; // Value to remove
-        int[] expectedNums = new int[]{2,2,3,3};  // The expected answer with correct length.
+        int[] nums = new int[]{0,1,2,2,3,0,4,2}; // Input array
+        int val = 2; // Value to remove
+        int[] expectedNums = new int[]{0,1,4,0,3,101,101,101};  // The expected answer with correct length.
         // It is sorted with no values equaling val.
 
         int k = removeElement(nums, val); // Calls your implementation
@@ -25,6 +25,14 @@ public class Main {
     }
 
     public static int removeElement(int[] nums, int val) {
-
+        int occurrences = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if(val == nums[i]){
+                nums[i] = 101;
+                occurrences++;
+            }
+        }
+        Arrays.sort(nums);
+        return nums.length - occurrences;
     }
 }
